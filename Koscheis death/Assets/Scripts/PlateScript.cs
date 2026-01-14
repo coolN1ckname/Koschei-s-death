@@ -4,30 +4,30 @@ using UnityEngine;
 public class PlateScript : MonoBehaviour
 {
     public static int pressCounter = 0;
-    void Update()
+
+    void Start()
     {
-        
+        pressCounter = 0;
     }
+
+    private bool isPressed = false;
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Obstacle"))
+        if (collision.CompareTag("Obstacle") && !isPressed)
         {
-            Debug.Log("Пластина нажата объектом: " + collision.name);
-
+            isPressed = true;
             pressCounter++;
-            return;
         }
     }
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Obstacle"))
+        if (collision.CompareTag("Obstacle") && isPressed)
         {
-            Debug.Log("Объект ушёл с пластины: " + collision.name);
-
+            isPressed = false;
             pressCounter--;
-            return;
         }
     }
 }
+

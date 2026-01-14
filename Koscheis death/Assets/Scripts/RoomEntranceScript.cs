@@ -10,7 +10,11 @@ public class RoomEntranceScript : MonoBehaviour
     public Vector3 topTargetPosition;
     public Vector3 downTargetPosition;
 
-
+    void Awake()
+    {
+        if (cameraScript == null)
+            cameraScript = FindFirstObjectByType<CameraScript>();
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         // Определяем направление входа

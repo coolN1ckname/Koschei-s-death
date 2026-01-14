@@ -10,9 +10,11 @@ public class FirstRoomScript : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("Пластин нажато = " + PlateScript.pressCounter);
         if(PlateScript.pressCounter == 2)
         {
             Destroy(door);
+            PlateScript.pressCounter = 0;
         }
     }
 }
